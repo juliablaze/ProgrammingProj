@@ -20,7 +20,7 @@ public class Inventorysystem {
         if (Uname.equals(Username[0]) && Pword.equals(Password[0])) {
 
         System.out.println("Access Granted! Welcome!");
-        SInventory(); // calling of code for admin access
+        SInventory(); // calling of Inventory access for Admin
         
     }
 
@@ -35,8 +35,8 @@ public class Inventorysystem {
    
     }
     
-  // skeleton for admin access
-    public static void SInventory()
+
+    public static void SInventory() \\ CODE FOR INVENTORY
     {
       
       Scanner sc = new Scanner(System.in); 
@@ -56,7 +56,23 @@ public class Inventorysystem {
       switch(inventory)  {
           case 1:
               System.out.println("CODE BLOCK FOR ADDING PRODUCTS"
-                      + "\nAnything else?");
+                      + "\nAnything else? Yes/No");
+              String select;
+                select = sc.nextLine();
+              if (select == "Yes" && select == "yes") {
+               System.out.println("Select: \n1. Add Product"
+              + "\n2. Delete Product"
+              + "\n3. Check Stock"
+              + "\n4. Change Prices"
+              + "\n5. Exit"
+              + "\nEnter selection: ");
+                  
+              }
+              else
+              {
+                  break;
+              }
+              
               break;
           case 2:
               System.out.println("CODE BLOCK FOR DELETING PRODUCTS"
@@ -79,5 +95,7 @@ public class Inventorysystem {
       
     }
     }    
+    
+ 
     
  
