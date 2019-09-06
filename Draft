@@ -1,10 +1,11 @@
 package inventorysystem;
 
 import java.util.Scanner;
-public class InventorySystem {
+public class Inventorysystem {
 
    
     public static void main(String[] args) {
+        
         
         
         String[] Username = {"Admin","SampleAcc"};
@@ -15,23 +16,68 @@ public class InventorySystem {
         String Uname = ab.nextLine();
         System.out.print("Password: ");
         String Pword = ab.nextLine();
-        
+
         if (Uname.equals(Username[0]) && Pword.equals(Password[0])) {
 
         System.out.println("Access Granted! Welcome!");
+        SInventory(); // calling of code for admin access
         
     }
 
     else if (Uname.equals(Username[1])) {
-        System.out.println("Invalid Password!");
+        System.out.println("Invalid Password! Try again!");
+        
     } else if (Pword.equals(Password[1])) {
         System.out.println("Invalid Username!");
     } else {
         System.out.println("Invalid Username & Password!");
     }
    
-    
-        
     }
     
-}
+  // skeleton for admin access
+    public static void SInventory()
+    {
+      
+      Scanner sc = new Scanner(System.in); 
+      int inventory=0;
+     
+      System.out.println("Select: \n1. Add Product"
+              + "\n2. Delete Product"
+              + "\n3. Check Stock"
+              + "\n4. Change Prices"
+              + "\n5. Exit"
+              + "\nEnter selection: ");
+      
+      while(inventory < 4){
+      inventory = sc.nextInt();
+      
+      
+      switch(inventory)  {
+          case 1:
+              System.out.println("CODE BLOCK FOR ADDING PRODUCTS"
+                      + "\nAnything else?");
+              break;
+          case 2:
+              System.out.println("CODE BLOCK FOR DELETING PRODUCTS"
+                      + "\nAnything else?");
+              break;
+          case 3:
+              System.out.println("CODE BLOCK FOR STOCKS"
+                      + "\nAnything else?");
+              break;
+          case 4: 
+              System.out.println("CODE BLOCK TO CHANGE PRICE"
+                      + "\nAnything else?");
+              break;
+          default: 
+              System.out.println("Bye");
+              break;
+      }
+      
+      }
+      
+    }
+    }    
+    
+ 
