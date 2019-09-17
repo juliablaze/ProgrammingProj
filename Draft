@@ -2,11 +2,15 @@ package inventorysystem;
 
 
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 public class InventorySystem {
 
    
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
         
         System.out.println("WELCOME TO NU MINI STORE!");
@@ -38,7 +42,7 @@ public class InventorySystem {
     }
         
         
-        public static void UserSignIn(){
+        public static void UserSignIn() throws IOException{
         String[] Username = {"Admin","SampleAcc"};
         String[] Password = {"Admin123","SamplePass"};    
         Scanner ab = new Scanner(System.in);    
@@ -78,7 +82,7 @@ public class InventorySystem {
     }
     
 
-    public static void CreateAccount() 
+    public static void CreateAccount() throws IOException 
     {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter desired Username: ");
@@ -92,7 +96,7 @@ public class InventorySystem {
         
     }
      
-    public static boolean CheckPass(String Pword)
+    public static boolean CheckPass(String Pword) throws IOException
     {
         Scanner input = new Scanner(System.in);
         boolean valid = true;
@@ -139,10 +143,11 @@ public class InventorySystem {
         System.out.println("Passwords do not match.");
         
     }
+        UserSignIn();
     }
    return false; 
     }
-    public static void SInventory() 
+    public static void SInventory() throws IOException 
     {
       
       Scanner sc = new Scanner(System.in); 
@@ -194,7 +199,40 @@ public class InventorySystem {
                       + "\nAnything else?");
               break;
           case 3:
-             
+              
+        String fileName = "Product.txt";
+
+        
+        String line = null;
+
+        try {
+            
+                FileReader fileReader = 
+                new FileReader(fileName);
+
+            
+                BufferedReader bufferedReader = 
+                new BufferedReader(fileReader);
+
+            while((line = bufferedReader.readLine()) != null) {
+                System.out.println(line);
+            }   
+
+            
+            bufferedReader.close();         
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println(
+                "Unable to open file '" + 
+                fileName + "'");                
+        }
+        catch(IOException ex) {
+            System.out.println(
+                "Error reading file '" 
+                + fileName + "'");                  
+           
+        }
+       
               break;
           case 4: 
               System.out.println("CODE BLOCK TO CHANGE PRICE"
