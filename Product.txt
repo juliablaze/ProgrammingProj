@@ -1,0 +1,8 @@
+[001]Pencil                 [002]Black Ballpen          [003]Blue Ballpen          [004]Red Ballpen              [005]Intermediate Pad 
+[006]Yellowpad              [007]Short brown envelope   [008]Long brown envelope   [009]Short folder             [010]Long folder  
+[011]Composition Notebook   [012]Spring Notebook        [013]Notebook filler       [014]Short plastic envelope   [015]Long plastic envelope 
+
+- Non-school supply products -
+
+[016]Bottled Water          [017]Juice Pack             [018]Coke                  [019]Royal                    [020]Sprite 
+[021]RC                     [022]Rootbeer
