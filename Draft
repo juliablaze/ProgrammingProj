@@ -1,5 +1,7 @@
 package inventorysystem;
 
+
+
 import java.util.Scanner;
 public class InventorySystem {
 
@@ -7,11 +9,40 @@ public class InventorySystem {
     public static void main(String[] args) {
         
         
+        System.out.println("WELCOME TO NU MINI STORE!");
+        System.out.println("What do you want to do?"
+                + "\n[1] Create Account"
+                + "\n[2] Log In"
+                + "\nEnter your selection: ");
+        Scanner st = new Scanner(System.in);
         
+        int select = 0;
+        
+        
+        while (select <2)
+        {
+            select = st.nextInt();
+            
+            switch(select){
+                case 1:
+                    CreateAccount();
+                    break;
+                case 2: 
+                    UserSignIn();
+                    break;
+                default:
+                    System.out.println("Invalid Number!");
+                    
+            }
+        }
+    }
+        
+        
+        public static void UserSignIn(){
         String[] Username = {"Admin","SampleAcc"};
-        String[] Password = {"Admin123","SamplePass"};
-        Scanner ab = new Scanner(System.in);
-        System.out.println("Welcome to NU mini store!");
+        String[] Password = {"Admin123","SamplePass"};    
+        Scanner ab = new Scanner(System.in);    
+        
         System.out.print("Username: ");
         String Uname = ab.nextLine();
         System.out.print("Password: ");
@@ -22,7 +53,8 @@ public class InventorySystem {
         System.out.println("Access Granted! Welcome!");
         SInventory(); // calling of Inventory access for Admin
         
-    }
+    
+        }
 
     else if (Uname.equals(Username[1])) {
         System.out.println("Invalid Password! Try again!");
@@ -110,7 +142,7 @@ public class InventorySystem {
     }
    return false; 
     }
-    public static void SInventory()
+    public static void SInventory() 
     {
       
       Scanner sc = new Scanner(System.in); 
@@ -162,10 +194,7 @@ public class InventorySystem {
                       + "\nAnything else?");
               break;
           case 3:
-              System.out.println("[1] Pencil"
-                      + "\n[2] Ballpen"
-                      + "\n[3] Yellow pad"
-                      + "\nAnything else?");
+             
               break;
           case 4: 
               System.out.println("CODE BLOCK TO CHANGE PRICE"
