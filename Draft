@@ -1,8 +1,6 @@
 package inventorysystem;
 
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 public class InventorySystem {
 
    
@@ -58,40 +56,60 @@ public class InventorySystem {
         String Pword = input.nextLine();
         CheckPass(Pword);
         
-        System.out.println("Please confirm Password: ");
-        String confirmPassword = input.next();
-        
-        if(Pword.matches(confirmPassword)){
-        System.out.println("Password successfully created.");
-    } else {
-        System.out.println("Passwords do not match.");
-        
-    }
-                         
+                               
         
     }
      
     public static boolean CheckPass(String Pword)
     {
+        Scanner input = new Scanner(System.in);
         boolean valid = true;
-        if (Pword.length()>=8)
-        {
-            
-            Pattern letter = Pattern.compile("a[-zA-z]");
-            Pattern digit = Pattern.compile("[0-9]");
-            Pattern special = Pattern.compile("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
-            
-            Matcher hasLetter = letter.matcher(Pword);
-            Matcher hasDigit = digit.matcher(Pword);
-            Matcher hasSpecial = special.matcher(Pword);
-        }
-        else{
-        
-        }
-    
-        return false;
+    if(Pword.length() < 8){
+        System.out.println("Password is not eight characters long.");
+        valid = false;
     }
-    
+    String upperCase = "(.*[A-Z].*)";
+    if(!Pword.matches(upperCase)){
+        System.out.println("Password must contain at least one capital letter.");
+        valid = false;
+    }
+    String numbers = "(.*[0-9].*)";
+    if(!Pword.matches(numbers)){
+        System.out.println("Password must contain at least one number.");
+        valid = false;
+    }
+    String specialChars = "(.*[ ! # @ $ % ^ & * ( ) - _ = + [ ] ; : ' \" , < . > / ?].*)";
+    if(!Pword.matches(specialChars)){
+        System.out.println("Password must contain at least one special character.");
+        valid = false;
+    }
+    String space = "(.*[   ].*)";
+    if(Pword.matches(space)){
+        System.out.println("!!Password cannot contain a space.");
+        valid = false;
+    }
+    if(Pword.startsWith("?")){
+        System.out.println("!!Password cannot start with '?'.");
+        valid = false;
+
+    }
+    if(Pword.startsWith("!")){
+        System.out.println("!!Password cannot start with '!'.");
+        valid = false;
+    }
+    if(valid){
+        System.out.println("Please confirm Password: ");
+        String confirmPassword = input.next();
+        
+        if(Pword.matches(confirmPassword)){
+        System.out.println("Account has been successfully created!");
+    } else {
+        System.out.println("Passwords do not match.");
+        
+    }
+    }
+   return false; 
+    }
     public static void SInventory()
     {
       
