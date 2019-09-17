@@ -1,6 +1,8 @@
 package inventorysystem;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 public class InventorySystem {
 
    
@@ -31,11 +33,65 @@ public class InventorySystem {
         System.out.println("Invalid Username!");
     } else {
         System.out.println("Invalid Username & Password!");
+        System.out.println("Create account? Yes/No");
+            Scanner input = new Scanner(System.in);    
+            String ans = input.nextLine();
+                if ("yes".equals(ans) || "Yes".equals(ans)) {
+                    CreateAccount();
+                }
+                else
+                {
+                   System.out.println("Bye!");
+                           }
     }
    
     }
     
 
+    public static void CreateAccount() 
+    {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter desired Username: ");
+        String Uname = input.nextLine();
+        
+        System.out.println("Enter desired Password: ");
+        String Pword = input.nextLine();
+        CheckPass(Pword);
+        
+        System.out.println("Please confirm Password: ");
+        String confirmPassword = input.next();
+        
+        if(Pword.matches(confirmPassword)){
+        System.out.println("Password successfully created.");
+    } else {
+        System.out.println("Passwords do not match.");
+        
+    }
+                         
+        
+    }
+     
+    public static boolean CheckPass(String Pword)
+    {
+        boolean valid = true;
+        if (Pword.length()>=8)
+        {
+            
+            Pattern letter = Pattern.compile("a[-zA-z]");
+            Pattern digit = Pattern.compile("[0-9]");
+            Pattern special = Pattern.compile("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
+            
+            Matcher hasLetter = letter.matcher(Pword);
+            Matcher hasDigit = digit.matcher(Pword);
+            Matcher hasSpecial = special.matcher(Pword);
+        }
+        else{
+        
+        }
+    
+        return false;
+    }
+    
     public static void SInventory()
     {
       
@@ -74,7 +130,7 @@ public class InventorySystem {
                  System.out.println(products[counter]);
                  
              System.out.println("Anything else? Select a number: "
-              + "\n1. Add Product"
+                     + "\n1. Add Product"
               + "\n2. Delete Product"
               + "\n3. Check Stock"
               + "\n4. Change Prices"
@@ -98,17 +154,12 @@ public class InventorySystem {
                       + "\nAnything else?");
               break;
           default: 
-              System.out.println("Bye! Thank you for shopping!");
+              System.out.println("Bye");
               break;
       }
       
       }
       
-    }
-    
-    public static void CheckStock()
-    {
-       System.out.println("");
     }
     }    
     
